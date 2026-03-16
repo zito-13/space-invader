@@ -1,4 +1,4 @@
-const grid = [
+let grid = [
     ["", "", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "", ""],
     ["", "", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "", ""],
     ["", "", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "", ""],
@@ -83,7 +83,18 @@ function menu() {
     clearInterval(intermoove)
     clearInterval(intershoot)
     clearInterval(interShootEnnemi)
-
+    grid = [
+         ["", "", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "", ""],
+    ["", "", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "", ""],
+    ["", "", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "", ""],
+    ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+    ["", "", "", "", "", "", "", "", "o", "", "", "", "", "", "", ""]
+    ]
     zone.innerHTML = ""
     score = 0
     updatescore()
@@ -205,17 +216,32 @@ function moveShootEnnemi() {
     for (let i = grid.length - 2; i >= 0; i--) {
         for (let j = 0; j < grid[i].length; j++) {
             if (grid[i][j] === "j") {
+                // Si le tir touche le joueur → défaite
                 if (grid[i + 1][j] === "o") {
-                    defaite()
-                    return
+                    defaite();
+                    return;
                 }
-                grid[i][j] = ""
-                if (i + 1 < grid.length) grid[i + 1][j] = "j"
+
+                // Déplacer le tir vers la ligne suivante
+                grid[i][j] = "";
+
+                if (i + 1 < grid.length) {
+                    grid[i + 1][j] = "j";
+                }
             }
         }
     }
-    game()
-    checkDefaite()
+
+    // Supprimer tous les tirs ennemis qui ont atteint la dernière ligne (hors joueur)
+    const lastRow = grid[grid.length - 1];
+    for (let j = 0; j < lastRow.length; j++) {
+        if (lastRow[j] === "j") {
+            lastRow[j] = ""; // disparition du tir
+        }
+    }
+
+    game();
+    checkDefaite();
 }
 
 // Vérification de défaite
@@ -271,6 +297,7 @@ function victoire() {
 
     const btnRestart = document.createElement("button")
     btnRestart.textContent = "Restart"
+    btnRestart.classList = "restart"
     zone.appendChild(btnRestart)
 
     btnRestart.addEventListener("click", menu)
@@ -290,6 +317,7 @@ function defaite() {
     zone.appendChild(msg)
 
     const btnRestart = document.createElement("button")
+    btnRestart.classList = "restart"
     btnRestart.textContent = "Restart"
     zone.appendChild(btnRestart)
 

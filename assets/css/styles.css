@@ -6,12 +6,15 @@
 header {
     display: flex;
     justify-content: space-between;
-    
-    #scoreboard {
-        color: white;
 
-    } 
- }
+    #scoreboard {
+        color: yellow;
+        font-family: "Audiowide", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+
+    }
+}
 
 body {
     background-image: url(/assets/images/death-star-wars-movies-black-x-high-660795.jpg);
@@ -46,11 +49,34 @@ main {
 
     }
 
- .victoire{
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    .victoire {
+        color: yellow;
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        font-family: "Audiowide", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 100px;
 
- }   
+    }
+    .defaite{
+        color: yellow;
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        font-family: "Audiowide", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 100px;
+    }
+    .restart{
+        background: yellow;
+        color: black;
+        font-family: "Audiowide", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 50px;
+
+    }
 }
