@@ -3,17 +3,31 @@
     padding: 0;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    
+    #scoreboard {
+        color: white;
+
+    } 
+ }
+
+body {
+    background-image: url(/assets/images/death-star-wars-movies-black-x-high-660795.jpg);
+    background-size: cover;
+}
+
 main {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
-    background-image: url(/assets/images/background.jpg);
-    background-size: cover;
-    
+
+
 
     img {
-        width: 100px;
+        width: 80px;
     }
 
     .ligne {
@@ -25,8 +39,18 @@ main {
         }
     }
 
-    .menuzone{
-        display: flex;
-        flex-direction: column;
+    .titre {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
     }
+
+ .victoire{
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+ }   
 }
